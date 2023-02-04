@@ -5,7 +5,6 @@ use v5.37;
 package Dist::Zilla::PluginBundle::RWP;
 use Moose;
 with 'Dist::Zilla::Role::PluginBundle::Easy';
-use DDP;
 
 sub configure ( $self ) {
 
@@ -23,23 +22,25 @@ sub configure ( $self ) {
 
   $self -> add_bundle( '@Filter' => {
     '-bundle' => '@Basic' ,
-    '-remove' => 'ConfirmRelease' ,
+    '-remove' => [ 'ConfirmRelease' ] ,
   }
   );
 
   $self -> add_plugins( @plugins );
 
-  $self -> add_plugins( AutoVersion => { major => 0 } );
+  $self -> add_plugins( [ AutoVersion => { major => 0 } ] , );
 
   $self -> add_plugins(
-    PruneFiles => {
-      filename => '_Deparsed_XSubs.pm' ,
-      filename => 'Dist::Zilla::PluginBundle::RWP.iml' ,
-    }
+    [
+      PruneFiles => {
+        filename => '_Deparsed_XSubs.pm' ,
+        match    => '\.iml$' ,
+      }
+    ] ,
   );
 
-  $self -> add_plugins( GithubMeta => { issues => 1 } );                 # External plugin
-  $self -> add_plugins( 'Git::Check' => { untracked_files => 'warn' } ); # External plugin
+  $self -> add_plugins( [ GithubMeta => { issues => 1 } ] , );                 # External plugin
+  $self -> add_plugins( [ 'Git::Check' => { untracked_files => 'warn' } ] , ); # External plugin
 
 }
 
