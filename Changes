@@ -4,6 +4,8 @@ This is a changelog file in addition to git commit messages.
 
 {{$NEXT}}
 
+0.230410  2023-02-11 01:16:27+04:00 Asia/Baku
+
   - Add a new GenerateFile plugin
   - Compile adding plugins into a single add_plugins call
 
