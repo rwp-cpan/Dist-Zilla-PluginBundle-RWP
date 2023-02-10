@@ -15,8 +15,6 @@ sub configure ( $self ) {
 
     PodWeaver
     InstallGuide
-    Git::Commit
-    Git::Tag
   ); # Plugins added with default settings
 
 
@@ -24,23 +22,63 @@ sub configure ( $self ) {
     '-bundle' => '@Basic' ,
     '-remove' => [ 'ConfirmRelease' ] ,
   }
+  ); # Git::Check, Git::Commit, Git::Tag, Git::Push
+
+  $self -> add_bundle( '@Filter' => {
+    '-bundle' => '@Git' ,
+    '-remove' => [ 'Git::Check' ] ,
+  }
   );
 
-  $self -> add_plugins( @plugins );
-
-  $self -> add_plugins( [ AutoVersion => { major => 0 } ] , );
-
   $self -> add_plugins(
+
+    @plugins ,
+
+    [
+      AutoVersion => {
+        major => 0
+      }
+    ] ,
+
     [
       PruneFiles => {
         filename => '_Deparsed_XSubs.pm' ,
         match    => '\.iml$' ,
       }
     ] ,
-  );
 
-  $self -> add_plugins( [ GithubMeta => { issues => 1 } ] , );                 # External plugin
-  $self -> add_plugins( [ 'Git::Check' => { untracked_files => 'warn' } ] , ); # External plugin
+    [
+      GenerateFile => {
+        filename            => 'CONTRIBUTING' ,
+        content_is_template => '1' ,
+
+        content             => my $text = <<~ 'CONTRIBUTING'
+          Please use project's GitHub repository for your contributions.
+
+          To contribute to this distribution you may:
+
+          1. Create pull requests at: https://github.com/rwp-cpan/{{$dist -> name}}/pulls
+
+          2. File issues at: https://github.com/rwp-cpan/{{$dist -> name}}/issues
+
+          Thanks
+          CONTRIBUTING
+      }
+    ] ,
+
+    [
+      GithubMeta => { # External plugin
+        issues => 1
+      }
+    ] ,
+
+    [
+      'Git::Check' => { # External plugin
+        untracked_files => 'ignore'
+      }
+    ]
+
+  );
 
 }
 

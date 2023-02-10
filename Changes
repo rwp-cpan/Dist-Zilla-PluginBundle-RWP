@@ -4,6 +4,9 @@ This is a changelog file in addition to git commit messages.
 
 {{$NEXT}}
 
+  - Add a new GenerateFile plugin
+  - Compile adding plugins into a single add_plugins call
+
 0.230350  2023-02-04 23:08:14+04:00 Asia/Baku
 
   * First CPAN release
