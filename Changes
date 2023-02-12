@@ -3,6 +3,8 @@ Revision history for Perl distribution Dist-Zilla-PluginBundle-RWP
 This is a changelog file in addition to git commit messages.
 
 {{$NEXT}}
+
+0.230430  2023-02-12 18:57:08+04:00 Asia/Baku
   - Add Prereqs::AuthorDeps plugin
 
 0.230410  2023-02-11 01:16:27+04:00 Asia/Baku
