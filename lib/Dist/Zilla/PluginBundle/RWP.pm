@@ -53,7 +53,7 @@ sub configure ( $self ) {
         content_is_template => '1' ,
 
         content             => my $text = <<~ 'CONTRIBUTING'
-          Please use project's GitHub repository for your contributions.
+          Please use project GitHub repository for your contributions.
 
           To contribute to this distribution you may:
 
