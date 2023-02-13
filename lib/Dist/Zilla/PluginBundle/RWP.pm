@@ -5,6 +5,15 @@ use v5.37;
 package Dist::Zilla::PluginBundle::RWP;
 use Moose;
 with 'Dist::Zilla::Role::PluginBundle::Easy';
+use builtin qw( true false );
+use experimental qw( builtin );
+
+has major_version => (
+  is      => 'ro' ,
+  isa     => 'Int' ,
+  lazy    => true ,
+  default => 0 ,
+);
 
 sub configure ( $self ) {
 
@@ -18,16 +27,18 @@ sub configure ( $self ) {
   ); # Plugins added with default settings
 
 
-  $self -> add_bundle( '@Filter' => {
-    '-bundle' => '@Basic' ,
-    '-remove' => [ 'ConfirmRelease' ] ,
-  }
+  $self -> add_bundle(
+    '@Filter' => {
+      '-bundle' => '@Basic' ,
+      '-remove' => [ 'ConfirmRelease' ] ,
+    }
   ); # Git::Check, Git::Commit, Git::Tag, Git::Push
 
-  $self -> add_bundle( '@Filter' => {
-    '-bundle' => '@Git' ,
-    '-remove' => [ 'Git::Check' ] ,
-  }
+  $self -> add_bundle(
+    '@Filter' => {
+      '-bundle' => '@Git' ,
+      '-remove' => [ 'Git::Check' ] ,
+    }
   );
 
   $self -> add_plugins(
@@ -36,7 +47,7 @@ sub configure ( $self ) {
 
     [
       AutoVersion => {
-        major => 0
+        major => $self -> major_version
       }
     ] ,
 
@@ -53,16 +64,16 @@ sub configure ( $self ) {
         content_is_template => '1' ,
 
         content             => my $text = <<~ 'CONTRIBUTING'
-          Please use project GitHub repository for your contributions.
+        Please use project GitHub repository for your contributions.
 
-          To contribute to this distribution you may:
+        To contribute to this distribution you may:
 
-          1. Create pull requests at: https://github.com/rwp-cpan/{{$dist -> name}}/pulls
+        1. Create pull requests at: https://github.com/rwp-cpan/{{$dist -> name}}/pulls
 
-          2. File issues at: https://github.com/rwp-cpan/{{$dist -> name}}/issues
+        2. File issues at: https://github.com/rwp-cpan/{{$dist -> name}}/issues
 
-          Thanks
-          CONTRIBUTING
+        Thanks
+        CONTRIBUTING
       }
     ] ,
 
