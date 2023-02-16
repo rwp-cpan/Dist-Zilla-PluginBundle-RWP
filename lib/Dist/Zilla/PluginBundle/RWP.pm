@@ -38,18 +38,17 @@ sub configure ( $self ) {
 
 =head1 DESCRIPTION
 
+RWP Dist-Zilla plugin bundle.
+
 =head2 Plugins
 
+The following plugins are used as part of this bundle.
+
 =for :list
-
-= MetaJSON
-
+= C<MetaJSON>
 Kwalitee extra indicator L<has_meta_json|https://cpants.cpanauthors.org/kwalitee/has_meta_json>
-
-= MetaProvides::Package
-
+= C<MetaProvides::Package>
 Kwalitee experimental indicator L<meta_yml_has_provides|https://cpants.cpanauthors.org/kwalitee/meta_yml_has_provides>
-
 The plugin is from the L<Dist-Zilla-Plugin-MetaProvides-Package|https://metacpan.org/dist/Dist-Zilla-Plugin-MetaProvides-Package> distribution.
 
 =cut
@@ -119,9 +118,3 @@ The plugin is from the L<Dist-Zilla-Plugin-MetaProvides-Package|https://metacpan
   );
 
 }
-
-=pod
-
-https://metacpan.org/pod/Dist::Zilla::Role::PluginBundle::Easy
-
-https://metacpan.org/release/RJBS/Dist-Zilla-PluginBundle-RJBS-5.023/source/lib/Dist/Zilla/PluginBundle/RJBS.pm
