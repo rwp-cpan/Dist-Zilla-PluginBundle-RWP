@@ -2,6 +2,14 @@
 
 use v5.37;
 
+=head1 SYNOPSIS
+
+  # In F<dist.ini>
+
+  [@RWP]
+
+=cut
+
 package Dist::Zilla::PluginBundle::RWP;
 use Moose;
 with 'Dist::Zilla::Role::PluginBundle::Easy';
@@ -21,11 +29,30 @@ sub configure ( $self ) {
     CPANFile
     AutoPrereqs
     NextRelease
+    MetaJSON
 
     PodWeaver
     InstallGuide
+    MetaProvides::Package
   ); # Plugins added with default settings
 
+=head1 DESCRIPTION
+
+=head2 Plugins
+
+=for :list
+
+= MetaJSON
+
+Kwalitee extra indicator L<has_meta_json|https://cpants.cpanauthors.org/kwalitee/has_meta_json>
+
+= MetaProvides::Package
+
+Kwalitee experimental indicator L<meta_yml_has_provides|https://cpants.cpanauthors.org/kwalitee/meta_yml_has_provides>
+
+The plugin is from the L<Dist-Zilla-Plugin-MetaProvides|https://metacpan.org/dist/Dist-Zilla-Plugin-MetaProvides> distribution.
+
+=cut
 
   $self -> add_bundle(
     '@Filter' => {
