@@ -50,7 +50,7 @@ Kwalitee extra indicator L<has_meta_json|https://cpants.cpanauthors.org/kwalitee
 
 Kwalitee experimental indicator L<meta_yml_has_provides|https://cpants.cpanauthors.org/kwalitee/meta_yml_has_provides>
 
-The plugin is from the L<Dist-Zilla-Plugin-MetaProvides|https://metacpan.org/dist/Dist-Zilla-Plugin-MetaProvides> distribution.
+The plugin is from the L<Dist-Zilla-Plugin-MetaProvides-Package|https://metacpan.org/dist/Dist-Zilla-Plugin-MetaProvides-Package> distribution.
 
 =cut
 
