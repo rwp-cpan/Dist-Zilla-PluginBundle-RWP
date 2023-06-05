@@ -1,5 +1,5 @@
 requires 'Dist::Zilla::PluginBundle::Git';
-requires 'Dist::Zilla::Plugin::PodWeaver'; #force
+requires 'Dist::Zilla::Plugin::PodWeaver'; # force
 requires 'Dist::Zilla::Plugin::InstallGuide';
 requires 'Dist::Zilla::Plugin::MetaProvides::Package';
 requires 'Dist::Zilla::Plugin::GithubMeta';
